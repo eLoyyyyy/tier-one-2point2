@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'DanAwesome';
+  src:  url('../fonts/dan-awesome.eot?ydbjaw');
+  src:  url('../fonts/dan-awesome.eot?ydbjaw#iefix') format('embedded-opentype'),
+    url('../fonts/dan-awesome.ttf?ydbjaw') format('truetype'),
+    url('../fonts/dan-awesome.woff?ydbjaw') format('woff'),
+    url('../fonts/dan-awesome.svg?ydbjaw#dan-awesome') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'DanAwesome' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-casino:before {
+  content: "\e900";
+}
+.icon-egames:before {
+  content: "\e901";
+}
+.icon-lottery:before {
+  content: "\e902";
+}
+.icon-poker:before {
+  content: "\e903";
+}
+.icon-racing:before {
+  content: "\e904";
+}
+.icon-sports:before {
+  content: "\e905";
+}
+
