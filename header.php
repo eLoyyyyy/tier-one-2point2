@@ -94,8 +94,9 @@ endif; ?>
                 <div class="container">
                     <div class="header hide-on-med-and-down">
                         <div class="row">
-                            <?php $lsix = ( is_active_sidebar( 'horizontal-ad-head' ) ) ? 'l4' : 'l12'; ?>
-                            <div class="col <?php echo $lsix; ?> m12 center-align">
+                            <?php $lsix = ( is_active_sidebar( 'top-sidebar' ) ) ? 'l4' : 'l12'; ?>
+                            <div class="col <?php echo $lsix; ?> m12 center-align" >
+                                
                                 <?php  
                                     $logo = get_theme_mod( 'site_logo', '' );
                                     $title_option = get_theme_mod( 'site_title_option', 'text-only' );
@@ -110,17 +111,19 @@ endif; ?>
 
                                     if ( $title_option == 'text-logo' && ! empty($logo) ) { ?>
                                         <div class="site-logo">
-                                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo esc_url( $logo ); ?>" alt="<?php bloginfo( 'name' ); ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>"></a>
+                                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                                                <img src="<?php echo esc_url( $logo ); ?>" alt="<?php bloginfo( 'name' ); ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>">
+                                            </a>
                                         </div>
                                         <div class="site-title-text">
-                                                <h1 class="h2" itemprop="headline"><a itemprop="url" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                                                <h1 class="h2" itemprop="name"><a itemprop="url" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
                                                 <h2 class="h5" itemprop="description"><?php bloginfo( 'description' ); ?></h2>
                                         </div>
                                     <?php } 
 
                                     if ( $title_option == 'text-only' ) { ?>
                                         <div class="site-title-text">
-                                                <h1 class="h2" itemprop="headline"><a itemprop="url" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                                                <h1 class="h2" itemprop="name"><a itemprop="url" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
                                                 <h2 class="h5" itemprop="description"><?php 
                                                     if(empty(bloginfo( 'description' ))):
                                                        echo "&nbsp;";
@@ -135,8 +138,8 @@ endif; ?>
                                 <div class="col l8 m12">
                                     <div class="header-ad center-align">
                                         <?php 
-                                            if ( !is_active_sidebar( 'left-sidebar' ) ) {
-                                                dynamic_sidebar( 'left-sidebar' );
+                                            if ( is_active_sidebar( 'top-sidebar' ) ) {
+                                                dynamic_sidebar( 'top-sidebar' );
                                             } else { ?>
                                             <a href="http://qq288.com/" rel="nofollow" target="_blank">
                                                 <img class="responsive-img" src="http://www.jennifer.com/wordpress/wp-content/uploads/2016/10/460-x-40-qq288-indo.gif" alt="QQ288 - Online Sports Betting, Live Casino, E-Games, Keno, Poker" title="QQ288 Asia Cash Market | Sports Betting Online | Live Casino | E-Games | Poker">

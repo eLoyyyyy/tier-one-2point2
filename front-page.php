@@ -92,16 +92,25 @@ get_header(); ?>
             
             
         </section>
+        <?php
+        $args = array("hide_empty" => 0,
+                        "type"      => "post",      
+                        "orderby"   => "count",
+                        "order"     => "DESC" );
+        $categories = get_categories( $args ); ?>
+        
+        
         <div class="col l6 m8 s12">
             <div class="section">
                 <div class="section-title">
-                    <h1 class="h5">Section Title</h1>
+                    <h1 class="h5"><?php echo get_cat_name( $categories[0]->term_id ) ?></h1>
                 </div>
                 <div class="section-content">
                     <?php 
                     $x = 0;
                     $args = array(
                         'posts_per_page'  => 5,
+                        'cat' => $categories[0]->term_id,
                         'tax_query' => array( array(
                             'taxonomy' => 'post_format',
                             'field' => 'slug',
@@ -123,8 +132,8 @@ get_header(); ?>
                             $x++; ?>
                     <div class="card blue">
                         <div class="card-image ">
-                            <?php $file = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())) ?: get_first_image(); ?>
-                            <img class="responsive-img soft-crop" src="<?php echo $file; ?>">
+                            <?php $file = _featured_image_url(); ?>
+                            <img class="responsive-img soft-crop" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'" src="<?php echo $file; ?>">
                             <div class="card-overlay">
                                 <div class="overlay-wrapper">
                                     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
@@ -151,14 +160,14 @@ get_header(); ?>
             
             <div class="section">
                 <div class="section-title">
-                    <h1 class="h5">Bottom Layout</h1>
+                    <h1 class="h5"><h1 class="h5"><?php echo get_cat_name( $categories[1]->term_id ) ?></h1></h1>
                 </div>
                 <div class="section-content">
                     <?php 
                     $x = 0;
                     $args = array(
                         'posts_per_page'  => 4,
-                        'offset' => 5,
+                        'cat' => $categories[1]->term_id,
                         'tax_query' => array( array(
                             'taxonomy' => 'post_format',
                             'field' => 'slug',
@@ -170,12 +179,12 @@ get_header(); ?>
 
                     if ( $query->have_posts() ) : ?>
                         <?php while ( $query->have_posts() ) : $query->the_post(); 
-                            $file = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())) ?: get_first_image();
+                            $file = _featured_image_url();
                                     if ( $x == 0 ) : ?>
                     <div class="top-bunk row flexbox-container">
                         <div class="col l6 m12 s12">
                             
-                            <img class="responsive-img soft-crop" style="height:192px;" src="<?php echo $file; ?>">
+                            <img class="responsive-img soft-crop" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'" style="height:192px;" src="<?php echo $file; ?>">
                         </div>
                         <div class="col l6 m12 s12">
                             <h1 class="bunk-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
@@ -186,7 +195,7 @@ get_header(); ?>
                                     <?php else : ?>
                     
                         <div class="col l4 m6 s12 bunk">
-                            <img class="responsive-img soft-crop" style="height:200px;" src="<?php echo $file; ?>">
+                            <img class="responsive-img soft-crop" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'" style="height:200px;" src="<?php echo $file; ?>">
                             <h1 class="h6"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
                         </div>
                     <?php if ( $x == 3 ) : ?></div><?php endif; ?>

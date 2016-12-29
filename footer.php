@@ -10,12 +10,20 @@
                             <p class="grey-text text-lighten-4">Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium.</p>
                             
                             <h5 class="white-text">Stay Connected</h5>
-                            <div class="social-media center">
-                                <a class="grey-text text-lighten-4" href="#!"><i class="fa fa-facebook fa-fw"></i></a>
-                                <a class="grey-text text-lighten-4" href="#!"><i class="fa fa-twitter fa-fw"></i></a>
-                                <a class="grey-text text-lighten-4" href="#!"><i class="fa fa-linkedin fa-fw"></i></a>
-                                <a class="grey-text text-lighten-4" href="#!"><i class="fa fa-instagram fa-fw"></i></a>
-                                <a class="grey-text text-lighten-4" href="#!"><i class="fa fa-pinterest-p fa-fw"></i></a>
+                            <div class="social-media center" itemscope itemtype="http://schema.org/Organization">
+                                <link itemprop="url" href="<?php echo home_url(); ?>">
+                                <meta itemprop="name" content="<?php echo bloginfo('name'); ?>">
+                                <?php $logo = get_theme_mod( 'site_logo', '' ); 
+                                if ( !empty($logo) ) : ?>
+                                <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                                    <meta itemprop="contentUrl" content="<?php echo esc_url( $logo ); ?>">
+                                </span>
+                                <?php endif; ?>
+                                <a class="grey-text text-lighten-4" itemprop="sameAs" href="#!"><i class="fa fa-facebook fa-fw"></i></a>
+                                <a class="grey-text text-lighten-4" itemprop="sameAs" href="#!"><i class="fa fa-twitter fa-fw"></i></a>
+                                <a class="grey-text text-lighten-4" itemprop="sameAs" href="#!"><i class="fa fa-linkedin fa-fw"></i></a>
+                                <a class="grey-text text-lighten-4" itemprop="sameAs" href="#!"><i class="fa fa-instagram fa-fw"></i></a>
+                                <a class="grey-text text-lighten-4" itemprop="sameAs" href="#!"><i class="fa fa-pinterest-p fa-fw"></i></a>
                             </div>
                         </div>
                     </div>
@@ -30,12 +38,15 @@
                                                 "order"     => "DESC",
                                                 'number'    => 18);
                                 $categories = get_categories( $args );
+                                /*print_r( $categories ); */
                                 foreach ( $categories as $category ) {
-                                    echo '<li><a class="grey-text text-lighten-3" href="' 
-                                        . get_category_link( $category->term_id ) 
-                                        . '" rel="bookmark">' 
-                                        . $category->name 
-                                        . '</a><span class="badge">'. $category->category_count . '</span></li>';
+                                    if ( $category->count > 0 ) {
+                                        echo '<li><a class="grey-text text-lighten-3" href="' 
+                                            . get_category_link( $category->term_id ) 
+                                            . '" rel="bookmark">' 
+                                            . $category->name 
+                                            . '</a><span class="badge">'. $category->category_count . '</span></li>';
+                                    }
                                 }
                                 ?>
                                 
@@ -73,7 +84,7 @@
                 </div>
             </div>
             <div class="footer-copyright container">
-                &copy; <?php echo tonetwo_copyright(); ?> <a href="<?php echo home_url(); ?>" itemscope itemtype="http://schema.org/Organization"><span itemprop="name"><?php echo force_relative_url(); ?></span></a>, All Rights Reversed.
+                &copy; <?php echo tonetwo_copyright(); ?> <a href="<?php echo home_url(); ?>"><span><?php echo force_relative_url(); ?></span></a>, All Rights Reversed.
                 <?php
                 wp_nav_menu( array(
                      'container'=> false,

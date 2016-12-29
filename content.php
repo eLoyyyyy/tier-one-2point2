@@ -46,7 +46,10 @@ endif;
                 </div>
             </div>
             <div class="col l3 m12 s12">
-                <?php get_sidebar(); ?>
+                <?php 
+                    if ( is_active_sidebar( 'right-sidebar' ) ) {
+                        dynamic_sidebar( 'right-sidebar' );
+                    } ?>
             </div>
         </div>
         <div class="row">

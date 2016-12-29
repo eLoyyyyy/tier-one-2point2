@@ -286,7 +286,7 @@ function _featured_image(){?>
         <?php endif; ?>
         <link itemprop="url" href="<?php echo $file; ?>">
         <a href="<?php the_permalink(); ?>">
-            <img class="responsive-img" src="<?php echo $file; ?>" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'" itemprop="image">
+            <img class="responsive-img" src="<?php echo $file; ?>" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'" itemprop="contentUrl">
         </a>
     </figure>
 <?php

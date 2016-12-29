@@ -63,29 +63,29 @@ $commentargs = array(
 
 <?php if( have_comments() ) : ?>
 
-<ul class="hide-on-med-and-down">
-    <li>
-        <h3 class="h5" id="comments">Comments</h3>
-        <ul>
-            <?php
-                // Display comments
-                wp_list_comments( array(
-                    'callback' => 'better_comments'
-                ) );
-            ?>
-        </ul>
-    </li>
-</ul>
+    <ul class="hide-on-med-and-down">
+        <li>
+            <h3 class="h5" id="comments">Comments</h3>
+            <ul>
+                <?php
+                    // Display comments
+                    wp_list_comments( array(
+                        'callback' => 'better_comments'
+                    ) );
+                ?>
+            </ul>
+        </li>
+    </ul>
 
-<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-<div id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-    <div class="nav-links row clearfix">
-        <div class="nav-previous col l6 m6 s6 center-align"><?php previous_comments_link( __( '&laquo; Older Comments', 'materialized' ) ); ?></div>
-        <div class="nav-next col l6 m6 s6 center-align"><?php next_comments_link( __( 'Newer Comments &raquo;', 'materialized' ) ); ?></div>
+    <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+    <div id="comment-nav-below" class="navigation comment-navigation" role="navigation">
+        <div class="nav-links row clearfix">
+            <div class="nav-previous col l6 m6 s6 center-align"><?php previous_comments_link( __( '&laquo; Older Comments', 'materialized' ) ); ?></div>
+            <div class="nav-next col l6 m6 s6 center-align"><?php next_comments_link( __( 'Newer Comments &raquo;', 'materialized' ) ); ?></div>
 
-    </div><!-- .nav-links -->
-</div><!-- #comment-nav-below -->
-<?php endif; // check for comment navigation ?>
+        </div><!-- .nav-links -->
+    </div><!-- #comment-nav-below -->
+    <?php endif; // check for comment navigation ?>
     
 
 <?php else : ?>

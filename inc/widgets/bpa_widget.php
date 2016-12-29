@@ -78,32 +78,38 @@ class bpa_widget extends WP_Widget {
             <div class="row clearfix flexbox-container center-align">
          
                  <div class="col l6 m4 s6">
+                     <?php $linkads = do_shortcode($linkads); ?>
                     <a href="<?php echo $linkads; ?>" target="<?php echo ($blnk == 'true' ? '_blank' : ''); ?>" rel="<?php echo $follow ?>">
                         <img class="responsive-img" src="<?php echo $imgads; ?>" title="<?php echo $titleimg; ?>" alt="<?php echo $titleimg; ?>"/>
                      </a>      
                  </div>
                  <div class="col l6 m4 s6">
+                     <?php $linkads_2 = do_shortcode($linkads_2); ?>
                     <a href="<?php echo $linkads_2; ?>" target="<?php echo ($blnk_2 == 'true' ? '_blank' : ''); ?>" rel="<?php echo $follow_2 ?>">
                         <img class="responsive-img" src="<?php echo $imgads_2; ?>" title="<?php echo $titleimg_2; ?>" alt="<?php echo $titleimg_2; ?>"/>
                      </a>
                  </div>
                  <div class="col l6 m4 s6">
+                     <?php $linkads_3 = do_shortcode($linkads_3); ?>
 
                     <a href="<?php echo $linkads_3; ?>" target="<?php echo ($blnk_3 == 'true' ? '_blank' : ''); ?>" rel="<?php echo $follow_3 ?>">
                         <img class="responsive-img" src="<?php echo $imgads_3; ?>" title="<?php echo $titleimg_3; ?>" alt="<?php echo $titleimg_3; ?>"/>
                     </a>
                  </div>
                  <div class="col l6 m4 s6">
+                     <?php $linkads_4 = do_shortcode($linkads_4); ?>
                     <a href="<?php echo $linkads_4; ?>" target="<?php echo ($blnk_4 == 'true' ? '_blank' : ''); ?>" rel="<?php echo $follow_4 ?>">
                         <img class="responsive-img" src="<?php echo $imgads_4; ?>" title="<?php echo $titleimg_4; ?>" alt="<?php echo $titleimg_4; ?>"/>
                     </a>
                  </div>
                  <div class="col l6 m4 s6">
+                     <?php $linkads_5 = do_shortcode($linkads_5); ?>
                     <a href="<?php echo $linkads_5; ?>" target="<?php echo ($blnk_5 == 'true' ? '_blank' : ''); ?>" rel="<?php echo $follow_5 ?>">
                         <img class="responsive-img" src="<?php echo $imgads_5; ?>" title="<?php echo $titleimg_5; ?>" alt="<?php echo $titleimg_5; ?>"/>
                     </a>
                  </div>
                  <div class="col l6 m4 s6">
+                     <?php $linkads_6 = do_shortcode($linkads_6); ?>
                     <a href="<?php echo $linkads_6; ?>" target="<?php echo ($blnk_6 == 'true' ? '_blank' : ''); ?>" rel="<?php echo $follow_6 ?>">
                         <img class="responsive-img" src="<?php echo $imgads_6; ?>" title="<?php echo $titleimg_6; ?>" alt="<?php echo $titleimg_6; ?>"/>
                      </a>

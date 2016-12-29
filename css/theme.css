@@ -1039,3 +1039,8 @@ span.rss-date {
     padding: 0.6rem;
     font-size: 1.1rem;
 }
+
+.site-logo {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}

@@ -56,6 +56,23 @@ if ( !function_exists( 'tod3_small_middle_sidebar' ) ):
     add_action( 'after_setup_theme', 'tod3_small_middle_sidebar' );
 endif;
 
+if ( !function_exists( 'tod3_top_horizontal_sidebar' ) ):
+    function tod3_top_horizontal_sidebar() {
+
+        register_sidebar( array(
+            'name' => __( 'Front-Page Top Sidebar', 'tod3' ),
+            'id' => 'top-sidebar',
+            'before_widget' => '<aside id="%1$s" class="section widget %1$s">',
+            'after_widget' => '</aside>',
+            'before_title'  => '',
+            'after_title' => '',
+            'description' => __( 'Top Sidebar on header for Tier-One.3 Theme Front-Page', 'tod3' ),
+        ) );
+
+    }
+    add_action( 'after_setup_theme', 'tod3_top_horizontal_sidebar' );
+endif;
+
 /* custom background */ 
 if ( ! function_exists( 'change_custom_background_cb' ) ) :
 
