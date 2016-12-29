@@ -15,7 +15,7 @@ get_header(); ?>
                 if ( have_posts() ) : ?>
                     <?php while ( have_posts() ) : the_post(); ?>
             
-                    <article class="blogpost card small" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+                    <article class="blogpost card small" itemscope itemtype="http://schema.org/BlogPosting">
                         <?php _pre_post_meta(); ?>
                         <div class="card-image">
                             <?php _featured_image(); ?>

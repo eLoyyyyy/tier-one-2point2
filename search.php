@@ -22,7 +22,7 @@
             
                     <?php while ( have_posts() ) : the_post(); ?>
             
-                    <article class="blogpost card horizontal" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+                    <article class="blogpost card horizontal" itemscope itemtype="http://schema.org/BlogPosting">
                         <link itemprop="mainEntityOfPage" href="<?php echo esc_url( get_permalink() );?>" />
                         <header class="entry-meta site-meta-t">
                             <meta itemprop="author" content="<?php the_author();?>">
