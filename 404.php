@@ -1,7 +1,13 @@
-<?php get_header(); ?>
+<?php 
+
+if ( !defined( 'ABSPATH' ) ) :
+	exit; // Exit if accessed directly
+endif; 
+
+get_header(); ?>
 <section class="main-content center-align four-o-four-wrapper">
     <div class="row clearfix">
-        <div class="col l8 offset-l4 m12 s12">
+        <div class="col l12 m12 s12">
             <div class="row">
                 <div class="col l12 m12 s12">
                     <p><?php _e('We&#39;re sorry, but the page you&#39;re looking for does not exist.', 'tieronetwo'); ?></p>
@@ -11,12 +17,6 @@
                             __('<a class="btn btn-large palette" href="%s">Return to Home</a>', 'tieronetwopointone'),
                             home_url(),
                             esc_url( wp_get_referer() ) 
-                            );
-                        ?>
-                        <?php 
-                        printf( 
-                            __('<span class="btn btn-large palette" onclick="goBack();">Go Back</a>', 'tieronetwopointone'),
-                            'Javascript:history(-1)'
                             );
                         ?>
                     </p>

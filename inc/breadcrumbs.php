@@ -32,7 +32,7 @@ function custom_breadcrumbs() {
         // Home page
         echo '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                 <meta itemprop="position" content="1" />
-                <a itemprop="item" class="breadcrumb grey-text text-lighten-1" href="' . get_home_url() . '"><span itemprop="name">' . $home_title . '</span></a>
+                <a itemprop="item" class="breadcrumb grey-text text-darken-1" href="' . get_home_url() . '"><span itemprop="name">' . $home_title . '</span></a>
              </span>';
            
         if ( is_archive() && !is_tax() && !is_category() && !is_tag() ) {
@@ -44,13 +44,13 @@ function custom_breadcrumbs() {
                 // Year link
                 echo '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                         <meta itemprop="position" content="2" />
-                        <a itemprop="item" class="breadcrumb grey-text text-lighten-1 archive-year" href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '"><span itemprop="name">' . get_the_time('Y') . ' Archives</span></a>
+                        <a itemprop="item" class="breadcrumb grey-text text-darken-1 archive-year" href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '"><span itemprop="name">' . get_the_time('Y') . ' Archives</span></a>
                     </span>';
 
                 // Month link
                 echo '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                         <meta itemprop="position" content="3" />
-                        <a itemprop="item" class="breadcrumb grey-text text-lighten-1 archive-month" href="' . get_month_link( get_the_time('Y'), get_the_time('m') ) . '" title="' . get_the_time('F') . '"><span itemprop="name">' . get_the_time('F') . ' Archives</span></a>
+                        <a itemprop="item" class="breadcrumb grey-text text-darken-1 archive-month" href="' . get_month_link( get_the_time('Y'), get_the_time('m') ) . '" title="' . get_the_time('F') . '"><span itemprop="name">' . get_the_time('F') . ' Archives</span></a>
                     </span>';
 
                 // Day display
@@ -66,7 +66,7 @@ function custom_breadcrumbs() {
                 // Year link
                 echo '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                         <meta itemprop="position" content="2" />
-                        <a itemprop="item" class="breadcrumb grey-text text-lighten-1 archive-year" href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '"><span itemprop="name">' . get_the_time('Y') . ' Archives</span></a>
+                        <a itemprop="item" class="breadcrumb grey-text text-darken-1 archive-year" href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '"><span itemprop="name">' . get_the_time('Y') . ' Archives</span></a>
                     </span>';
 
                 // Month display
@@ -131,7 +131,7 @@ function custom_breadcrumbs() {
               
                 echo '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                         <meta itemprop="position" content="2" />
-                        <a itemprop="item" class="breadcrumb grey-text text-lighten-1" href="' . $post_type_archive . '"><span itemprop="name">' . $post_type_object->labels->name . '</span></a>
+                        <a itemprop="item" class="breadcrumb grey-text text-darken-1" href="' . $post_type_archive . '"><span itemprop="name">' . $post_type_object->labels->name . '</span></a>
                     </span>';
               
             }
@@ -155,7 +155,7 @@ function custom_breadcrumbs() {
                     $parents = preg_replace('/<a href="(.*?)">(.*?)<\/a>/', '<a href="$1"><span itemprop="name">$2</span></a>', $parents);
                     $parents = str_replace( '<a', '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                                                     <meta itemprop="position" content="2" />
-                                                    <a itemprop="item" class="breadcrumb grey-text text-lighten-1" ', $parents );
+                                                    <a itemprop="item" class="breadcrumb grey-text text-darken-1" ', $parents );
                     
                     $parents = str_replace( '</a>', '</a>
                                                     </span>', $parents );
@@ -189,7 +189,7 @@ function custom_breadcrumbs() {
                   
                 echo '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                         <meta itemprop="position" content="3" />
-                        <a itemprop="item" class="breadcrumb grey-text text-lighten-1 truncate" href="' . $cat_link . '" title="' . $cat_name . '"><span itemprop="name">' . $cat_name . '</span></a>
+                        <a itemprop="item" class="breadcrumb grey-text text-darken-1 truncate" href="' . $cat_link . '" title="' . $cat_name . '"><span itemprop="name">' . $cat_name . '</span></a>
                     </span>';
                 
                 echo '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
@@ -230,7 +230,7 @@ function custom_breadcrumbs() {
                 foreach ( $anc as $ancestor ) {
                     $parents .= '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                                     <meta itemprop="position" content="2" />
-                                    <a itemprop="item" class="breadcrumb grey-text text-lighten-1" href="' . get_permalink($ancestor) . '" title="' . get_the_title($ancestor) . '"><span itemprop="name">' . get_the_title($ancestor) . '</span></a>
+                                    <a itemprop="item" class="breadcrumb grey-text text-darken-1" href="' . get_permalink($ancestor) . '" title="' . get_the_title($ancestor) . '"><span itemprop="name">' . get_the_title($ancestor) . '</span></a>
                                 </span>';
                 }
                    

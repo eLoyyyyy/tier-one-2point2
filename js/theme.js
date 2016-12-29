@@ -43,18 +43,20 @@ jQuery.fn.exists = function () {
 
 jQuery(document).ready(function($){
     //Preloader
-    jQuery(window).load(function() {
+    /*jQuery(window).load(function() {
         preloaderFadeOutTime = 500;
         function hidePreloader() {
             var preloader = jQuery('.preloader');
             preloader.fadeOut(preloaderFadeOutTime);
         }
         hidePreloader();
-    });
+    });*/
     
     $('ul.tabs').tabs();
     
-    $(".button-collapse").sideNav();
+    $(".button-collapse").sideNav({
+        'draggable': true,
+    });
     
     
     
@@ -65,12 +67,12 @@ jQuery(document).ready(function($){
         var breadcrumb = $('.breadcrumb-list .col > span:last-child .breadcrumb');
          
         if ( viewportWidth < 601 ) {
-            $('.blogpost').removeClass('horizontal');
+            /*$('.blogpost').removeClass('horizontal');*/
             breadcrumb.addClass('truncate');
             
             
         } else {
-            $('.blogpost').addClass('horizontal');
+            /*$('.blogpost').addClass('horizontal');*/
             breadcrumb.removeClass('truncate');
         }
     });

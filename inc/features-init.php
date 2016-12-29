@@ -5,129 +5,55 @@ if ( !defined( 'ABSPATH' ) ) :
 endif;
 
 /*Sidebar*/
-if ( !function_exists( 'tieronetwopointone_header_horizontal_ad_widget' ) ):
-    function tieronetwopointone_header_horizontal_ad_widget() {
+if ( !function_exists( 'tod3_left_sidebar' ) ):
+    function tod3_left_sidebar() {
 
         register_sidebar( array(
-            'name' => __( 'Header Horizontal Ad Widget', 'tieronetwopointone' ),
-            'id' => 'horizontal-ad-head',
-            'before_widget' => '<section id="%1$s" class="widget %1$s">',
-            'after_widget' => '</section>',
-            'before_title'  => '<div class="widget-title-container"><h2 class="widget-title">',
-            'after_title' => '</h2></div>',
-            'description' => __( 'Horizontal Ad Widget On Header', 'tieronetwopointone' ),
-        ) );
-
-    } 
-    add_action( 'after_setup_theme', 'tieronetwopointone_header_horizontal_ad_widget' );
-endif;
-
-
-if ( !function_exists( 'tieronetwopointone_sidebar' ) ):
-    function tieronetwopointone_sidebar() {
-
-        register_sidebar( array(
-            'name' => __( 'Main Sidebar', 'tieronetwopointone' ),
-            'id' => 'main-sidebar',
-            'before_widget' => '<section id="%1$s" class="widget %1$s">',
-            'after_widget' => '</section>',
-            'before_title'  => '<div class="widget-title-container"><h2 class="widget-title">',
-            'after_title' => '</h2></div>',
-            'description' => __( 'Main Sidebar for Tier-One.2.1 Theme', 'tieronetwopointone' ),
+            'name' => __( 'Front-Page Left Sidebar', 'tod3' ),
+            'id' => 'left-sidebar',
+            'before_widget' => '<aside id="%1$s" class="section widget %1$s">',
+            'after_widget' => '</aside>',
+            'before_title'  => '<div class="section-title"><h1 class="h5 widget-title">',
+            'after_title' => '</h1></div>',
+            'description' => __( 'Left Sidebar for Tier-One.3 Theme Front Page', 'tod3' ),
         ) );
 
     }
-    add_action( 'after_setup_theme', 'tieronetwopointone_sidebar' );
+    add_action( 'after_setup_theme', 'tod3_left_sidebar' );
 endif;
 
-/*Sidebar*/
-if ( !function_exists( 'tieronetwopointone_footer_1_sidebar' ) ):
-    function tieronetwopointone_footer_1_sidebar() {
+if ( !function_exists( 'tod3_right_sidebar' ) ):
+    function tod3_right_sidebar() {
 
         register_sidebar( array(
-            'name' => __( 'Footer Sidebar 1', 'tieronetwopointone' ),
-            'id' => 'footer_sidebar_1',
-            'before_widget' => '<section id="%1$s" class="sidebar-1 %1$s">',
-            'after_widget' => '</section>',
-            'before_title'  => '<div class="widget-title-container"><h2 class="widget-title">',
-            'after_title' => '</h2></div>',
-            'description' => __( 'Main Sidebar for Tier-One.2.1 Theme', 'tieronetwopointone' ),
+            'name' => __( 'Front-Page Right Sidebar', 'tod3' ),
+            'id' => 'right-sidebar',
+            'before_widget' => '<aside id="%1$s" class="section widget %1$s">',
+            'after_widget' => '</aside>',
+            'before_title'  => '<div class="section-title"><h1 class="h5 widget-title">',
+            'after_title' => '</h1></div>',
+            'description' => __( 'Right Sidebar for Tier-One.3 Theme Front-Page', 'tod3' ),
         ) );
 
     }
-    add_action( 'after_setup_theme', 'tieronetwopointone_footer_1_sidebar' );
+    add_action( 'after_setup_theme', 'tod3_right_sidebar' );
 endif;
 
-/*Sidebar*/
-if ( !function_exists( 'tieronetwopointone_footer_2_sidebar' ) ):
-    function tieronetwopointone_footer_2_sidebar() {
+if ( !function_exists( 'tod3_small_middle_sidebar' ) ):
+    function tod3_small_middle_sidebar() {
 
         register_sidebar( array(
-            'name' => __( 'Footer Sidebar 2', 'tieronetwopointone' ),
-            'id' => 'footer_sidebar_2',
-            'before_widget' => '<section id="%1$s" class="sidebar-2 %1$s">',
-            'after_widget' => '</section>',
-            'before_title'  => '<div class="widget-title-container"><h2 class="widget-title">',
-            'after_title' => '</h2></div>',
-            'description' => __( 'Main Sidebar for Tier-One.2.1 Theme', 'tieronetwopointone' ),
-        ) );
-
-    }
-    add_action( 'after_setup_theme', 'tieronetwopointone_footer_2_sidebar' );
-endif;
-
-/*Sidebar*/
-if ( !function_exists( 'tieronetwopointone_footer_3_sidebar' ) ):
-    function tieronetwopointone_footer_3_sidebar() {
-
-        register_sidebar( array(
-            'name' => __( 'Footer Sidebar 3', 'tieronetwopointone' ),
-            'id' => 'footer_sidebar_3',
-            'before_widget' => '<section id="%1$s" class="sidebar-3 %1$s">',
-            'after_widget' => '</section>',
-            'before_title'  => '<div class="widget-title-container"><h2 class="widget-title">',
-            'after_title' => '</h2></div>',
-            'description' => __( 'Main Sidebar for Tier-One.2.1 Theme', 'tieronetwopointone' ),
-        ) );
-
-    }
-    add_action( 'after_setup_theme', 'tieronetwopointone_footer_3_sidebar' );
-endif;
-
-/*Sidebar*/
-if ( !function_exists( 'tieronetwopointone_front_page_top_sidebar' ) ):
-    function tieronetwopointone_front_page_top_sidebar() {
-
-        register_sidebar( array(
-            'name' => __( 'Front Page', 'tieronetwopointone' ),
-            'id' => 'front_page_top_sidebar',
-            'before_widget' => '',
-            'after_widget' => '',
+            'name' => __( 'Front-Page Small-Middle Sidebar', 'tod3' ),
+            'id' => 'sm-sidebar',
+            'before_widget' => '<aside id="%1$s" class="section widget %1$s">',
+            'after_widget' => '</aside>',
             'before_title'  => '',
             'after_title' => '',
-            'description' => __( 'Top Full Width Sidebar for Tier-One.2.1 Theme', 'tieronetwopointone' ),
+            'description' => __( 'Small Middle for Tier-One.3 Theme Front-Page', 'tod3' ),
         ) );
 
     }
-    add_action( 'after_setup_theme', 'tieronetwopointone_front_page_top_sidebar' );
-endif;
-
-/*Sidebar*/
-if ( !function_exists( 'tieronetwopointone_front_page_sidebar' ) ):
-    function tieronetwopointone_front_page_sidebar() {
-
-        register_sidebar( array(
-            'name' => __( 'Front Page', 'tieronetwopointone' ),
-            'id' => 'front_page_sidebar',
-            'before_widget' => '',
-            'after_widget' => '',
-            'before_title'  => '',
-            'after_title' => '',
-            'description' => __( 'Main Sidebar for Tier-One.2.1 Theme', 'tieronetwopointone' ),
-        ) );
-
-    }
-    add_action( 'after_setup_theme', 'tieronetwopointone_front_page_sidebar' );
+    add_action( 'after_setup_theme', 'tod3_small_middle_sidebar' );
 endif;
 
 /* custom background */ 
@@ -187,7 +113,7 @@ function tieronetwo_setup_theme(){
     add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption') );
     
     if ( version_compare( $wp_version, '3.4', '>=' ) ) {
-        add_theme_support( 'custom-background', array( 'wp-head-callback' => 'change_custom_background_cb','default-color' => 'fff' ) );
+        add_theme_support( 'custom-background', array( 'wp-head-callback' => 'change_custom_background_cb','default-color' => 'e7e6e4' ) );
     }
     else {
         add_custom_background('change_custom_background_cb');
@@ -203,7 +129,7 @@ add_action( 'after_setup_theme', 'tieronetwo_setup_theme' );
 
 register_nav_menus(
     array(
-        'primary'   =>  __( 'Primary Menu', 'tier-one-2' ),
+        'primary'   =>  __( 'Primary Menu', 'tod3' ),
         // Register the Primary menu and Drawer menu
         // Theme uses wp_nav_menu() in TWO locations.
         // Copy and paste the line above right here if you want to make another menu,
@@ -211,15 +137,15 @@ register_nav_menus(
     )
 );
 
-/*register_nav_menus(
+register_nav_menus(
     array(
-        'footer'   =>  __( 'Footer Menu', 'tier-one-2' ),
+        'secondary'   =>  __( 'Footer Menu', 'tod3' ),
         // Register the Primary menu and Drawer menu
         // Theme uses wp_nav_menu() in TWO locations.
         // Copy and paste the line above right here if you want to make another menu,
         // just change the 'primary' to another name
     )
-);*/
+);
 
 function tieronetwo_customize_register($wp_customize)
 {

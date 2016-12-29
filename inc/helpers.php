@@ -12,11 +12,12 @@ add_filter('get_avatar','change_avatar_css');
  
 
 function tierone_tags(){
+    
     $posttags = get_the_tags();
     if ($posttags) {
-        foreach($posttags as $tag) {
-            ?><a rel="tags" href="<?php echo get_tag_link($tag->term_id);?>"><span itemprop="keywords"><?php echo $tag->name;?></span></a>, <?php
-        }
+      foreach($posttags as $tag) {
+        ?><li><a href="<?php echo get_tag_link($tag->term_id); ?>"><span itemprop="keywords"><?php echo $tag->name; ?></span></a></li><?php 
+      }
     }
 }
 
@@ -42,21 +43,6 @@ function tonetwo_copyright() {
     return $output;
 }
 
-
-function get_first_image() {
-    global $post, $posts;
-    $first_img = '';
-    ob_start();
-    ob_end_clean();
-    $output = preg_match_all( '/<img .+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
-    $first_img = isset($matches[1][0]) ? $matches[1][0]: ''; 
-    if ( empty( $first_img ) || is_null( $first_img ) ) :
-        // defines a fallback imaage
-        $first_img = get_template_directory_uri() . "/images/default.jpg";
-    endif;
-
-    return $first_img;
-}
 
 function get_attachment_id( $url ) {
 	$attachment_id = 0;
@@ -138,11 +124,16 @@ add_filter( 'wpseo_locale', 'yst_wpseo_change_og_locale' );
 
 function jquery_enqueue_with_fallback() {
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery' , 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', false, '3.1.1', true );
-    wp_add_inline_script( 'jquery', 'window.jQuery||document.write(\'<script src="'.esc_url(includes_url()).'libs/js/jquery.js"><\/script>\')' );
-    wp_enqueue_script( 'jquery' );
+    wp_register_script( 'jquery-js' , 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', array(), false, false );
+    wp_add_inline_script( 'jquery-js', 'window.jQuery||document.write(\'<script src="'.esc_url(includes_url()).'libs/js/jquery.js"><\/script>\')' );
+    wp_enqueue_script( 'jquery-js' );
+    
 }
 add_action( 'wp_enqueue_scripts' , 'jquery_enqueue_with_fallback' );
+
+function WPad46a5wc4(){
+    ?> <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> <?php
+}
 
 function time_ago( $type = 'post' ) {
     $d = 'comment' == $type ? 'get_comment_time' : 'get_post_time';
@@ -201,32 +192,24 @@ function tieronetwo_next_prev_link()
         <li class="next"><a rel="next" href="<?php echo get_permalink($next_post->ID) ;?>" class=" ">Next <?php echo ( is_single() ? 'post' : ( is_attachment() ? 'media' : '') ); ?> &raquo;</a></li>
     </ul>-->
 
-    <div class="row">
+    <div class="row flexbox-container">
         <div class="col l6 m12 s12">
-            <div class="card horizontal">
-                <div class="card-image">
-                    <img class="responsive-img" style="width:100px;height:112px;" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($prev_post->ID)) ;?>" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'">
-                </div>
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <a rel="next" href="<?php echo get_permalink($prev_post->ID) ;?>" class=" ">
-                            <?php echo get_the_title($prev_post->ID); ?>
-                        </a>
-                    </div>
+            <div class="card previous-article hoverable">
+                <div class="card-content right-align">
+                    <p class="card-title">Previous</p>
+                    <a rel="next" href="<?php echo get_permalink($prev_post->ID) ;?>" class="grey-text text-lighten-1">
+                        <?php echo get_the_title($prev_post->ID); ?>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col l6 m12 s12">
-            <div class="card horizontal">
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <a rel="next" href="<?php echo get_permalink($next_post->ID) ;?>" class=" ">
-                            <?php echo get_the_title($next_post->ID); ?>
-                        </a>
-                    </div>
-                </div>
-                <div class="card-image">
-                    <img class="responsive-img" style="width:100px;height:112px;" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($next_post->ID)) ;?>" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'">
+            <div class="card next-article hoverable">
+                <div class="card-content">
+                    <p class="card-title">Next</p>
+                    <a rel="next" href="<?php echo get_permalink($next_post->ID) ;?>" class="grey-text text-lighten-1">
+                        <?php echo get_the_title($next_post->ID); ?>
+                    </a>
                 </div>
             </div>
         </div>
@@ -263,3 +246,75 @@ function remove_hentry( $classes, $class, $post_id ) {
     return $classes;
 }
 add_filter( 'post_class', 'remove_hentry', 10, 3 );
+/*
+function get_first_image() {
+    global $post, $posts;
+    $first_img = '';
+    ob_start();
+    ob_end_clean();
+    $output = preg_match_all( '/<img .+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
+    $first_img = isset($matches[1][0]) ? $matches[1][0]: ''; 
+    if ( empty( $first_img ) || is_null( $first_img ) ) :
+        // defines a fallback imaage
+        $first_img = get_template_directory_uri() . "/images/default.jpg";
+    endif;
+
+    return $first_img;
+}*/
+
+function get_first_image(){ 
+   preg_match( '/<img .+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content() ,$matches);
+   return isset($matches[1]) ? $matches[1]: false; 
+}
+
+function _featured_image_url(){
+    return wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())) ?: get_first_image() ?: get_template_directory_uri() . "/images/default.jpg";
+}
+
+function _featured_image(){?>
+    <figure class="figure center-align" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <?php $file = _featured_image_url(); ?>
+
+        <?php
+        if ( if_file_exists($file) ) :
+            list($width, $height, $type, $attr) = getimagesize($file);  ?>
+            <meta itemprop="width" content="<?php echo $width; ?>">
+            <meta itemprop="height" content="<?php echo $height; ?>">
+        <?php else : ?>
+            <meta itemprop="width" content="">
+            <meta itemprop="height" content="">
+        <?php endif; ?>
+        <link itemprop="url" href="<?php echo $file; ?>">
+        <a href="<?php the_permalink(); ?>">
+            <img class="responsive-img" src="<?php echo $file; ?>" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'" itemprop="image">
+        </a>
+    </figure>
+<?php
+}
+
+function _pre_post_meta(){?>
+    <header class="genpost-entry-header">
+        <link itemprop="mainEntityOfPage" href="<?php echo esc_url( get_permalink() );?>" />
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="url" content="#">
+            <meta itemprop="name" content="<?php the_author(); ?>">
+        </span>
+        <meta itemprop="datePublished" content="<?php the_time('c'); ?> ">
+        <meta itemprop="dateModified" content="<?php the_modified_time('c'); ?>">
+        <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+            <?php $logo = get_theme_mod( 'site_logo', '' ); 
+            if ( !empty($logo) ) : ?>
+            <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                <meta itemprop="url" content="<?php echo esc_url( $logo ); ?>">
+            </span>
+            <?php endif; ?>
+            <meta itemprop="name" content="<?php bloginfo( 'name' ); ?>">
+        </span>
+        <?php 
+            global $lang_support;
+            $lang = get_theme_mod( 'force_locale', 'en' );
+        ?>
+        <meta itemprop="inLanguage" content="<?php echo $lang_support['html'][$lang]; ?>">
+    </header>
+<?php
+}

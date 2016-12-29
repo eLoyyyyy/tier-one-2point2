@@ -74,7 +74,7 @@ class wp_materialize_navwalker extends Walker {
         $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
         $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
         $attributes .= ! empty( $children )         ? ' data-activates="dropdown-'. $item->ID .'" data-beloworigin="true" data-constrainwidth="false" data-alignment="right" ' : '';
-        $attributes .= ! empty( $children )         ? ' class="dropdown-button black-text bold '. $depth_class_names .'"' : ' class="black-text bold '. $depth_class_names .'"';
+        $attributes .= ! empty( $children )         ? ' class="dropdown-button bold '. $depth_class_names .'"' : ' class="bold '. $depth_class_names .'"';
         $item_output .= '<a itemprop="url" '. $attributes .'>';
         $item_output .= $args->link_before . '<span itemprop="name">' . apply_filters( 'the_title', $item->title, $item->ID ) . '</span>' . $args->link_after;
         
@@ -175,8 +175,8 @@ function create_materialize_submenu( $theme_location ) {
                      
                     $menu_list .= '<li class="no-padding">' ."\n";
                         $menu_list .= '<ul class="collapsible collapsible-accordion">' ."\n";
-                            $menu_list .= '<li>' ."\n";
-                            $menu_list .= '<a href="'.$menu_item->url.'" style="font-weight:bold;" class="collapsible-header">'.$menu_item->title.' <i class="fa fa-caret-down" aria-hidden="true"></i></a>';
+                            $menu_list .= '<li class="no-padding">' ."\n";
+                            $menu_list .= '<div class="collapsible-header"><a href="'.$menu_item->url.'" style="font-weight:bold;">'.$menu_item->title.' <i class="fa fa-caret-down right" aria-hidden="true"></i></a></div>';
                             $menu_list .= '<div class="collapsible-body">';
                                 $menu_list .= '<ul>';
                                     $menu_list .= implode( "\n", $menu_array );

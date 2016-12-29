@@ -1,24 +1,4 @@
 <?php
-/**
- * The template for displaying comments.
- *
- * The area of the page that contains both current comments
- * and the comment form.
- *
- * @package materialized
- */
- 
-/*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
- */
-if ( post_password_required() ) {
-	return;
-}
- 
-// Edit the default comment structure
- 
 $commentargs = array(
   'id_form'           => 'commentform',
   'id_submit'         => 'submit',
@@ -65,7 +45,7 @@ $commentargs = array(
                         ) . 
                     '</p>',
   'comment_notes_after' => '<div class="clear"></div>
-                            <span class="black-text">' .
+                            <span class="black-text hide-on-small-only">' .
                                 sprintf(
                                   __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s' ),
                                   ' <code>' . allowed_tags() . '</code>'
@@ -73,71 +53,47 @@ $commentargs = array(
                             '</span>'
  
 );
- 
-if (is_user_logged_in()) {
-	$commtarget = '#comment';
-} else {
-	$commtarget = '#author';
-}
- 
- 
-$replyargs = array(
-	'walker'            => null,
-	'max_depth'         => '',
-	'callback'          => 'materialized_comment',
-	'end-callback'      => null,
-	'type'              => 'all',
-	'reply_text'        => 'Reply',
-	'page'              => '',
-	'per_page'          => '',
-	'avatar_size'       => 90,
-	'reverse_top_level' => null,
-	'reverse_children'  => '',
-	'format'            => 'html5', //or xhtml if no HTML5 theme support
-	'short_ping'        => false,
-  'echo'     					=> true // boolean, default is true
-);
- 
 ?>
-<div id="comments" class="comments-area">
-	<?php if ( have_comments() ) : ?>
-		<h2 class="h5 comments-title">
-			 <a class="btn-floating btn-large waves-effect waves-light green right" href="<?php echo $commtarget; ?>"><i class="fa fa-plus" style="vertical-align: middle;" aria-hidden="true"></i></a>
-			<?php
-				printf( _nx( 'One comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'materialized' ),
-					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
-			?>
-		</h2>
-        <div class="comment-form card section grey lighten-4">
-            <div class="card-content">
-                <?php comment_form($commentargs); ?>
-            </div>
-        </div>
-        <div class="divider"></div> 
-		<div class="comment-list" > <!-- itemscope itemtype="http://schema.org/UserComments" -->
-			<?php
-				wp_list_comments($replyargs);
-			?>
-		</div><!-- .comment-list -->
- 
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-		<div id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-			<div class="nav-links row clearfix">
-                <h2 class="h5 center-align">Read More Comments:</h2>
-				<div class="nav-previous col l6 m6 s6 center-align"><?php previous_comments_link( __( '&laquo; Older Comments', 'materialized' ) ); ?></div>
-				<div class="nav-next col l6 m6 s6 center-align"><?php next_comments_link( __( 'Newer Comments &raquo;', 'materialized' ) ); ?></div>
- 
-			</div><!-- .nav-links -->
-		</div><!-- #comment-nav-below -->
-		<?php endif; // check for comment navigation ?>
- 
-	<?php endif; // have_comments() ?>
- 
-	<?php
-		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
-	?>
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'materialized' ); ?></p>
-	<?php endif; ?>
- 
-</div><!-- #comments -->
+
+<div class="card hoverable">
+    <div class="card-content">
+        <?php comment_form($commentargs); ?>
+    </div>
+</div>
+
+<?php if( have_comments() ) : ?>
+
+<ul class="hide-on-med-and-down">
+    <li>
+        <h3 class="h5" id="comments">Comments</h3>
+        <ul>
+            <?php
+                // Display comments
+                wp_list_comments( array(
+                    'callback' => 'better_comments'
+                ) );
+            ?>
+        </ul>
+    </li>
+</ul>
+
+<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+<div id="comment-nav-below" class="navigation comment-navigation" role="navigation">
+    <div class="nav-links row clearfix">
+        <div class="nav-previous col l6 m6 s6 center-align"><?php previous_comments_link( __( '&laquo; Older Comments', 'materialized' ) ); ?></div>
+        <div class="nav-next col l6 m6 s6 center-align"><?php next_comments_link( __( 'Newer Comments &raquo;', 'materialized' ) ); ?></div>
+
+    </div><!-- .nav-links -->
+</div><!-- #comment-nav-below -->
+<?php endif; // check for comment navigation ?>
+    
+
+<?php else : ?>
+    <?php if ('open' == $post->comment_status) : ?>
+
+    <?php else : ?>
+        <p class="nocomments">Comments are closed.</p>
+
+    <?php endif; ?>
+
+<?php endif; ?>

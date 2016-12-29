@@ -12,7 +12,7 @@ function getPostViews($postID){
         add_post_meta($postID, $count_key, '0');
         return "0 View";
     }
-    return $count.' Views';
+    return $count . ($count > 0 ? ' Views' : ' View');
 }
 function setPostViews($postID) {
     $count_key = 'post_views_count';

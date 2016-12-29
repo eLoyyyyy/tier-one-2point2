@@ -1,13 +1,24 @@
 <?php get_header(); ?>
 
     <div class="row">
-        <section class="main-content col l8 m12 s12">
+        <div class="col l12 m12 s12">
+           <header class="search-page-header row">
+                <?php custom_breadcrumbs(); ?>
+                <h2 class="h4"><?php printf(__( '<span class="search-title-span">Search Results for: </span> %s', 'tieronetwo' ), '<span>' . get_search_query() . '</span>'); ?></h2>
+            </header>
+        </div>
+    </div>
+
+    <div class="row">
+        <aside class="col l3 m4 s12 hide-on-small-only">
+            <?php 
+            if ( is_active_sidebar( 'left-sidebar' ) ) {
+                dynamic_sidebar( 'left-sidebar' );
+            } ?>
+        </aside>
+        <section class="main-content col l6 m8 s12">
             <?php 
                 if ( have_posts() ) : ?>
-                   <header class="search-page-header row">
-                        <?php custom_breadcrumbs(); ?>
-                        <h2 class="h4"><?php printf(__( '<span class="search-title-span">Search Results for: </span> %s', 'tieronetwo' ), '<span>' . get_search_query() . '</span>'); ?></h2>
-                    </header>
             
                     <?php while ( have_posts() ) : the_post(); ?>
             
@@ -35,10 +46,11 @@
                         <div class="card-image">
                             <figure class="figure" itemprop="image" itemscope itemtype="http://schema.org/ImageObject" class="cat_box2a">
         
-                                <?php if (has_post_thumbnail() ) { ?>
-                                <meta itemprop="url" content="<?php the_post_thumbnail_url(); ?>">
-                                <?php
-                                    $file = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())); 
+                                <?php if (has_post_thumbnail() ) { 
+                                $file = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())) ?: get_first_image();
+                                ?>
+                                <meta itemprop="url" content="<?php echo $file; ?>">
+                                <?php 
                                     if (if_file_exists($file)) :
                                         list($width, $height, $type, $attr) = getimagesize($file);  ?>
                                         <meta itemprop="width" content="<?php echo $width; ?>">
@@ -48,20 +60,7 @@
                                         <img style="height:190px; width:300px" class="responsive-img" 
                                  src="<?php echo wp_get_attachment_url( get_post_thumbnail_id() ); ?>" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'" itemprop="image">
                                     </a>
-                                <?php } else { ?>
-                                <meta itemprop="url" content="<?php echo get_first_image(); ?>">
-                                <?php
-                                    $file = get_first_image(); 
-                                    if (if_file_exists($file)) :
-                                        list($width, $height, $type, $attr) = getimagesize($file);  ?>
-                                        <meta itemprop="width" content="<?php echo $width; ?>">
-                                        <meta itemprop="height" content="<?php echo $height; ?>">
-                                    <?php endif; ?>
-                                    <a href="<?php the_permalink(); ?>">
-                                        <img class="responsive-img" src="<?php echo get_first_image(); ?>" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'" style="height:190px; width:300px" itemprop="image" />
-                                    </a>
                                 <?php } ?>
-
                             </figure>
                         </div>
                         <div class="card-stacked">
@@ -89,8 +88,11 @@
             
                 <?php endif; ?>
         </section> <!-- main content -->
-        <aside class="col l4 m12 s12">
-            <?php get_sidebar(); ?>
+        <aside class="col l3 m12 s12 hide-on-small-only">
+            <?php 
+            if ( is_active_sidebar( 'right-sidebar' ) ) {
+                dynamic_sidebar( 'right-sidebar' );
+            } ?>
         </aside>
     </div>
 
