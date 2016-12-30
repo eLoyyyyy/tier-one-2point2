@@ -34,7 +34,7 @@ function tonetwo_copyright() {
     ");
     $output = '';
     if($copyright_dates) {
-        $copyright = '<span itemprop="copyrightYear">'.$copyright_dates[0]->firstdate.'</span>';
+        $copyright = '<span>'.$copyright_dates[0]->firstdate.'</span>';
         if($copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate) {
             $copyright .= ' - ' . $copyright_dates[0]->lastdate;
         }
@@ -295,8 +295,8 @@ function _featured_image(){?>
 function _pre_post_meta(){?>
     <header class="genpost-entry-header">
         <link itemprop="mainEntityOfPage" href="<?php echo esc_url( get_permalink() );?>" />
-        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="url" content="#">
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person"><?php ; ?>
+            <link itemprop="url" href="<?php echo get_author_posts_url( the_author_meta( 'ID' ) ); ?>">
             <meta itemprop="name" content="<?php the_author(); ?>">
         </span>
         <meta itemprop="datePublished" content="<?php the_time('c'); ?> ">
@@ -318,3 +318,4 @@ function _pre_post_meta(){?>
     </header>
 <?php
 }
+

@@ -60,8 +60,8 @@
                                         <li>
                                             <div class="post left-align clearfix">
                                                 <div class="post-image">
-                                                    <?php $file = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())) ?: get_first_image(); ?>
-                                                    <a href="<?php the_permalink(); ?>"><img class="responsive-img soft-crop" style="height:89px;" src="<?php echo $file; ?>"></a>
+                                                    <?php $file = _featured_image_url(); ?>
+                                                    <a href="<?php the_permalink(); ?>"><img class="responsive-img soft-crop" style="height:89px;" alt="<?php the_title(); ?>" src="<?php echo $file; ?>"></a>
                                                 </div>
                                                 <div class="post-content">
                                                     <h1 class="h6"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>

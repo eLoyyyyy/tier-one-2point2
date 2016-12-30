@@ -50,7 +50,7 @@ class tod3_show_post extends WP_Widget {
                                         <figure class="card-img">
                                             <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
                                                 <?php $file = _featured_image_url(); ?>
-                                                <img class="responsive-img soft-crop hide-on-xl-and-down" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'" style="width:100%; height:94px;" src="<?php echo $file; ?>" alt="<?php the_title(); ?>" />
+                                                <img class="responsive-img soft-crop hide-on-xl-and-down" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'" style="width:100%; height:94px;" src="<?php echo $file; ?>" alt="<?php the_title(); ?>" />
                                             </a>
                                         </figure>
                                         <div class="card-ttle">
@@ -68,7 +68,7 @@ class tod3_show_post extends WP_Widget {
                                     <div class="card-content center">
                                         <figure class="imghvr-push-up">
                                             <?php $file = _featured_image_url(); ?>
-                                            <img class="soft-crop" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'" src="<?php echo $file; ?>">
+                                            <img class="soft-crop" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'" src="<?php echo $file; ?>">
                                             <figcaption>
                                                 <h1 class="h6"><?php the_title(); ?></h1>
                                             </figcaption>
@@ -81,7 +81,7 @@ class tod3_show_post extends WP_Widget {
                                 <div class="card">
                                     <div class="card-image">
                                         <?php $file = _featured_image_url(); ?>
-                                        <img class="responsive-img" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'" src="<?php echo $file; ?>">
+                                        <img class="responsive-img" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" onerror="javascript:this.src='<?php echo get_template_directory_uri() . "/images/default.jpg"; ?>'" src="<?php echo $file; ?>">
                                     </div>
                                     <div class="card-content">
                                         <h1 class="h6"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>

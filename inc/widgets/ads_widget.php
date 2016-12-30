@@ -42,13 +42,12 @@ class ads_widget extends WP_Widget {
                         <img class="<?php echo $custom_class; ?>" src="<?php echo $imgads; ?>" title="<?php echo $titleimg; ?>" alt="<?php echo $titleimg; ?>">
                     </a>
                     
-                    <style>
-                        <?php echo $custom_css; ?>
-                    </style>
-                    <?php echo $custom_html; ?>
                     <figcaption class="ad-sign">Advertisement</figcaption>
                 </figure>
-            
+                <style>
+                    <?php echo $custom_css; ?>
+                </style>
+                <?php echo $custom_html; ?>
             </div>
         </section>
 

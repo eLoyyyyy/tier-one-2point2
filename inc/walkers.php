@@ -79,7 +79,7 @@ class wp_materialize_navwalker extends Walker {
         $item_output .= $args->link_before . '<span itemprop="name">' . apply_filters( 'the_title', $item->title, $item->ID ) . '</span>' . $args->link_after;
         
         if(!empty($children))
-        $item_output .= ' <i class="material-icons right">arrow_drop_down</i>';
+        $item_output .= ' <i class="fa fa-caret-down" aria-hidden="true"></i>';
         $item_output .= '</a>';
         $item_output .= $args->after;
         if(!empty($children))

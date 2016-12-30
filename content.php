@@ -32,7 +32,7 @@ endif;
                     <div class="blog-date">
                         <span class="day"><?php the_time( 'd' ); ?></span>
                         <span class="month"><?php the_time( 'F' ); ?></span>
-                        <span class="year"><?php the_time( 'Y' ); ?></span>
+                        <span class="year" itemprop="copyrightYear"><?php the_time( 'Y' ); ?></span>
                     </div>
                     <p class="entry-meta site-meta-t">
                         by <?php the_author(); ?>
@@ -100,7 +100,7 @@ endif;
                                 </button>
                             </li>
                             <li>
-                                <button class="reddit btn-floating social-share" data-share="reddit" target='_blank' href=''>
+                                <button class="reddit btn-floating social-share" data-share="reddit">
                                     <i class="fa fa-reddit-alien fa-fw " aria-hidden="true"></i>
                                 </button>
                             </li>
