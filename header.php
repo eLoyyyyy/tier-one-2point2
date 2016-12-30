@@ -95,7 +95,7 @@ endif; ?>
                     <div class="header hide-on-med-and-down">
                         <div class="row">
                             <?php $lsix = ( is_active_sidebar( 'top-sidebar' ) ) ? 'l4' : 'l12'; ?>
-                            <div class="col <?php echo $lsix; ?> m12 center-align" >
+                            <div class="col <?php echo $lsix; ?> m12 center-align" itemscope itemtype="http://schema.org/Organization" itemref="pinterestprof facebookprof twitterprof linkedinprof instagramprof">
                                 
                                 <?php  
                                     $logo = get_theme_mod( 'site_logo', '' );
@@ -103,8 +103,11 @@ endif; ?>
 
                                     if ( $title_option == 'logo-only' && ! empty($logo) ) { ?>
                                         <div class="site-logo">
-                                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-                                                <img class="responsive-img" src="<?php echo esc_url( $logo ); ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>">
+                                            <meta itemprop="name" content="<?php echo bloginfo('name'); ?>">
+                                            <a itemprop="url" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                                                <figure itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                                                    <img itemprop="contentUrl" class="responsive-img" src="<?php echo esc_url( $logo ); ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>">
+                                                </figure>
                                             </a>
                                         </div>
                                     <?php } 
