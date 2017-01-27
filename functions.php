@@ -84,7 +84,7 @@ function _social_media(){
                 </button>
             </li>
             <li>
-                <?php $image = ( has_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' )[0] : get_first_image() ; ?>
+                <?php $image = ( has_post_thumbnail() ) ? wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'full' )[0] : get_first_image() ; ?>
                 <button class="pinterest btn social-share" data-share="pinterest" data-title="<?php urlencode(the_title()) ;?>" data-image="<?php echo esc_url( $image ); ?>">
                     <i class="fa fa-pinterest fa-fw " aria-hidden="true"></i>
                 </button>
@@ -121,3 +121,24 @@ function remove_width_attribute( $html ) {
 add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
 add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
 
+function xyz_amp_add_custom_actions() {
+    add_filter( 'the_content', 'xyz_amp_add_featured_image' );
+}
+
+function xyz_amp_add_featured_image( $content ) {
+    if ( has_post_thumbnail() ) {
+        // Just add the raw <img /> tag; our sanitizer will take care of it later.
+        $image = sprintf( '<p class="xyz-featured-image">%s</p>', get_the_post_thumbnail() );
+        $content = $image . $content;
+    }
+    return $content;
+}
+
+
+add_action( 'pre_amp_render_post', 'xyz_amp_add_custom_actions' );
+
+function wpse17478_init()
+{
+    remove_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
+}
+add_action( 'init', 'wpse17478_init' );

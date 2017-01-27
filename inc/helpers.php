@@ -193,6 +193,7 @@ function tieronetwo_next_prev_link()
     </ul>-->
 
     <div class="row flexbox-container">
+        <?php if ( $prev_post ) : ?>
         <div class="col l6 m12 s12">
             <div class="card previous-article hoverable">
                 <div class="card-content right-align">
@@ -203,16 +204,20 @@ function tieronetwo_next_prev_link()
                 </div>
             </div>
         </div>
-        <div class="col l6 m12 s12">
+        <?php endif; ?>
+        
+        <?php if ( $next_post ) : ?>
+        <div class="col l6 <?php echo ( $prev_post ? '' : 'offset-l6' ); ?>m12 s12">
             <div class="card next-article hoverable">
                 <div class="card-content">
                     <p class="card-title">Next</p>
-                    <a rel="next" href="<?php echo get_permalink($next_post->ID) ;?>" class="grey-text text-lighten-1">
-                        <?php echo get_the_title($next_post->ID); ?>
+                    <a rel="next" href="<?php echo get_permalink( $next_post->ID ) ;?>" class="grey-text text-lighten-1">
+                        <?php echo get_the_title( $next_post->ID ); ?>
                     </a>
                 </div>
             </div>
         </div>
+        <?php endif; ?>
     </div>
     <?php endif;
 }

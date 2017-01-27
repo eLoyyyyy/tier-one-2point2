@@ -75,7 +75,7 @@ class bpa_widget extends WP_Widget {
         endif; */?>
 
          <div class="section-content ">
-            <div class="row clearfix flexbox-container center-align">
+            <div class="row clearfix flexbox-container center-align ads">
          
                  <div class="col l6 m4 s6">
                      <?php $linkads = do_shortcode($linkads); ?>

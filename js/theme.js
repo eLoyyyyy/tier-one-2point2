@@ -60,8 +60,9 @@ jQuery(document).ready(function($){
     
     
     
+    
+    
      jQuery(window).on('load resize', function() {
-        console.log('resize');
         var viewportWidth = $(window).width();
         var viewportHeight = $(window).height();
         var breadcrumb = $('.breadcrumb-list .col > span:last-child .breadcrumb');
@@ -75,6 +76,28 @@ jQuery(document).ready(function($){
             /*$('.blogpost').addClass('horizontal');*/
             breadcrumb.removeClass('truncate');
         }
+         
+        var container = $('.mobile-group-item');
+        var logo = $('.mobile-brand-logo');
+        var icon = $('.mobile-icon');
+    
+        if ( (logo.width() + icon.width() + (15*2) + 40 )  >= container.outerWidth() + 15 ) {
+            if ( !logo.parent().hasClass( 'mobile-logo-wrap-full' ) ) {
+                logo.parent().addClass('mobile-logo-wrap-full');
+            }
+            if ( !icon.hasClass( 'mobile-icon-full' ) ) {
+                icon.addClass( 'mobile-icon-full' );
+            }
+            
+        } else {
+            if ( logo.parent().hasClass( 'mobile-logo-wrap-full' ) ) {
+                logo.parent().removeClass('mobile-logo-wrap-full');
+            }
+            if ( icon.hasClass( 'mobile-icon-full' ) ) {
+                icon.removeClass('mobile-icon-full');
+            }
+        }
+    
     });
     
     $('.blog-list-archive li ul').hide();

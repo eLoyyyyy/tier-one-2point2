@@ -41,6 +41,7 @@ get_header(); ?>
                         </div>
                         <div class="card-content">
                             <h2 class="h6"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><span itemprop="headline"><?php the_title(); ?></span></a></h2>
+                            <p><?php the_excerpt(); ?></p>
                             <small><?php echo time_ago(); ?></small>
                         </div>
                     </article>
